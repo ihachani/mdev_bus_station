@@ -1,7 +1,7 @@
 .ios, .md {
   page-about {
     .bottom-padding {
-      height: 200px;
+      height: 150px;
     }
     ion-card {
       position: relative;
@@ -24,7 +24,7 @@
     ion-card > img {
       width: auto;
       height: auto;
-
+      margin: auto;
       max-height: 250px;
       align-content: center;
     }

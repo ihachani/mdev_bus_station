@@ -1,6 +1,6 @@
 import {Component, ViewChild, ElementRef} from '@angular/core';
 
-import {NavController, Content} from 'ionic-angular';
+import {NavController, Content, Platform} from 'ionic-angular';
 
 declare var google;
 
@@ -9,13 +9,19 @@ declare var google;
   templateUrl: 'about.html'
 })
 export class AboutPage {
+
+  private _isAndroid: boolean;
+  private _isiOS: boolean;
+
+  // private platform : Platform;
   @ViewChild(Content) content: Content;
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 
-  constructor(public navCtrl: NavController) {
-    console.log("Yippeee");
+  constructor(public navCtrl: NavController, private platform: Platform) {
+    this._isAndroid = platform.is('android');
+    this._isiOS = platform.is('ios');
   }
 
   ionViewDidLoad() {
@@ -47,8 +53,21 @@ export class AboutPage {
 
     this.addInfoWindow(marker, content);
   }
+  openMapsApp() {
+    var coords = "-34.9290,138.6010";
+    if(this._isiOS) {
+      window.open("http://maps.apple.com/?q=" + coords, '_system');
+      return;
+    }
+    if(this._isAndroid) {
+      window.open("geo:" + coords);
+      return;
+    }
+    window.open("http://maps.google.com/?q=" + coords, '_system');
+    return;
+  }
 
-  addInfoWindow(marker, content){
+  addInfoWindow(marker, content) {
 
     let infoWindow = new google.maps.InfoWindow({
       content: content
