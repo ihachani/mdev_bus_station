@@ -1,6 +1,6 @@
 import {Component, ViewChild, ElementRef} from '@angular/core';
 
-import {NavController} from 'ionic-angular';
+import {NavController, Content} from 'ionic-angular';
 
 declare var google;
 
@@ -9,6 +9,7 @@ declare var google;
   templateUrl: 'about.html'
 })
 export class AboutPage {
+  @ViewChild(Content) content: Content;
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
@@ -32,9 +33,6 @@ export class AboutPage {
     }
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
-    console.log("Yippeee");
-    console.log(this.map);
   }
 
   addMarker() {
