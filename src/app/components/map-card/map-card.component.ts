@@ -3,19 +3,18 @@
  */
 import {Component, ViewChild, ElementRef, Input} from '@angular/core';
 
-import {NavController, Platform} from 'ionic-angular';
-import {GoogleMapsService} from "./google-maps.service";
+import {GoogleMapsService} from "./services/google-maps.service";
+import {NavigationAppLauncherService} from "./services/navigation-app-launcher.service";
 
 declare var google;
 
 @Component({
   selector: 'my-component',
   templateUrl: 'map-card.component.html',
+  providers: [NavigationAppLauncherService]
 })
 export class MapCardComponent {
 
-  private _isAndroid: boolean;
-  private _isiOS: boolean;
 
   @Input() latitude: number;
 
@@ -25,9 +24,8 @@ export class MapCardComponent {
   @ViewChild('mapcard') mapElement: ElementRef;
   map: any;
 
-  constructor(public navCtrl: NavController, private platform: Platform) {
-    this._isAndroid = platform.is('android');
-    this._isiOS = platform.is('ios');
+  constructor(private navigationAppLauncher: NavigationAppLauncherService) {
+
   }
 
   ngOnInit() {
@@ -41,19 +39,8 @@ export class MapCardComponent {
   }
 
 
-
   openMapsApp() {
-    var coords = "-34.9290,138.6010";
-    if (this._isiOS) {
-      window.open("http://maps.apple.com/?q=" + coords, '_system');
-      return;
-    }
-    if (this._isAndroid) {
-      window.open("geo:" + coords);
-      return;
-    }
-    window.open("http://maps.google.com/?q=" + coords, '_system');
-    return;
+    this.navigationAppLauncher.lunchNavigationApp(this.latitude, this.langitude);
   }
 
 
