@@ -3,15 +3,14 @@
  */
 import {Component, ViewChild, ElementRef, Input} from '@angular/core';
 
-import {NavController, Content, Platform} from 'ionic-angular';
+import {NavController, Platform} from 'ionic-angular';
+import {GoogleMapsService} from "./google-maps.service";
 
 declare var google;
 
 @Component({
   selector: 'my-component',
   templateUrl: 'map-card.component.html',
-  // styleUrls: ['map-card.component.scss']
-  // template: '<div>Hello my name is {{name}}. <button (click)="sayMyName()">Say my name</button></div>'
 })
 export class MapCardComponent {
 
@@ -22,8 +21,6 @@ export class MapCardComponent {
 
   @Input() langitude: number;
 
-  // private platform : Platform;
-  @ViewChild(Content) content: Content;
 
   @ViewChild('mapcard') mapElement: ElementRef;
   map: any;
@@ -34,42 +31,16 @@ export class MapCardComponent {
   }
 
   ngOnInit() {
-    this.loadMap();
-  }
-
-  // ionViewDidLoad() {
-  //   this.loadMap();
-  //   console.log("ionic view load");
-  // }
-
-  loadMap() {
-    console.log("init");
-    // let latLng = new google.maps.LatLng(-34.9290, 138.6010);
-    let latLng = new google.maps.LatLng(this.latitude, this.langitude);
-
-    let mapOptions = {
-      center: latLng,
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    this.addMarker();
-    console.log(this.map);
-  }
-
-  addMarker() {
-
-    let marker = new google.maps.Marker({
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      position: this.map.getCenter()
+    let googleMapsService: GoogleMapsService = new GoogleMapsService(this.mapElement);
+    googleMapsService.getMap({
+      longitude: this.langitude,
+      latitude: this.latitude,
+      name: "name",
+      address: "address",
     });
-
-    let content = "<h4>Information!</h4>";
-
-    this.addInfoWindow(marker, content);
   }
+
+
 
   openMapsApp() {
     var coords = "-34.9290,138.6010";
@@ -85,15 +56,5 @@ export class MapCardComponent {
     return;
   }
 
-  addInfoWindow(marker, content) {
 
-    let infoWindow = new google.maps.InfoWindow({
-      content: content
-    });
-
-    google.maps.event.addListener(marker, 'click', () => {
-      infoWindow.open(this.map, marker);
-    });
-
-  }
 }
