@@ -1,7 +1,7 @@
 /**
  * Created by lonsomehell on 11/28/16.
  */
-import {Component, ViewChild, ElementRef} from '@angular/core';
+import {Component, ViewChild, ElementRef, Input} from '@angular/core';
 
 import {NavController, Content, Platform} from 'ionic-angular';
 
@@ -18,6 +18,10 @@ export class MapCardComponent {
   private _isAndroid: boolean;
   private _isiOS: boolean;
 
+  @Input() latitude: number;
+
+  @Input() langitude: number;
+
   // private platform : Platform;
   @ViewChild(Content) content: Content;
 
@@ -31,7 +35,6 @@ export class MapCardComponent {
 
   ngOnInit() {
     this.loadMap();
-
   }
 
   // ionViewDidLoad() {
@@ -41,7 +44,8 @@ export class MapCardComponent {
 
   loadMap() {
     console.log("init");
-    let latLng = new google.maps.LatLng(-34.9290, 138.6010);
+    // let latLng = new google.maps.LatLng(-34.9290, 138.6010);
+    let latLng = new google.maps.LatLng(this.latitude, this.langitude);
 
     let mapOptions = {
       center: latLng,
@@ -50,6 +54,7 @@ export class MapCardComponent {
     }
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    this.addMarker();
     console.log(this.map);
   }
 
