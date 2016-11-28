@@ -1,22 +1,27 @@
+/**
+ * Created by lonsomehell on 11/28/16.
+ */
 import {Component, ViewChild, ElementRef} from '@angular/core';
 
-import {NavController, Platform} from 'ionic-angular';
+import {NavController, Content, Platform} from 'ionic-angular';
 
 declare var google;
 
 @Component({
-  selector: 'page-about',
-  templateUrl: 'about.html'
+  selector: 'my-component',
+  templateUrl: 'map-card.component.html',
+  // styleUrls: ['map-card.component.scss']
+  // template: '<div>Hello my name is {{name}}. <button (click)="sayMyName()">Say my name</button></div>'
 })
-export class AboutPage {
+export class MapCardComponent {
 
   private _isAndroid: boolean;
   private _isiOS: boolean;
 
   // private platform : Platform;
-  // @ViewChild(Content) content: Content;
+  @ViewChild(Content) content: Content;
 
-  @ViewChild('map') mapElement: ElementRef;
+  @ViewChild('mapcard') mapElement: ElementRef;
   map: any;
 
   constructor(public navCtrl: NavController, private platform: Platform) {
@@ -24,12 +29,18 @@ export class AboutPage {
     this._isiOS = platform.is('ios');
   }
 
-  ionViewDidLoad() {
+  ngOnInit() {
     this.loadMap();
+
   }
 
-  loadMap() {
+  // ionViewDidLoad() {
+  //   this.loadMap();
+  //   console.log("ionic view load");
+  // }
 
+  loadMap() {
+    console.log("init");
     let latLng = new google.maps.LatLng(-34.9290, 138.6010);
 
     let mapOptions = {
@@ -39,7 +50,7 @@ export class AboutPage {
     }
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    console.log('about', this.map);
+    console.log(this.map);
   }
 
   addMarker() {
