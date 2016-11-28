@@ -2,7 +2,7 @@
  * Created by lonsomehell on 11/28/16.
  */
 import {Injectable, ElementRef} from '@angular/core';
-import {MapInfo} from "./Map-Info";
+import {MapInfo} from "../Map-Info";
 
 declare var google;
 
