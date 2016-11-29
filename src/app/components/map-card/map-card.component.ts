@@ -5,22 +5,16 @@ import {Component, ViewChild, ElementRef, Input} from '@angular/core';
 
 import {GoogleMapsService} from "./services/google-maps.service";
 import {NavigationAppLauncherService} from "./services/navigation-app-launcher.service";
-
-declare var google;
+import {MapInfo} from "./Map-Info";
 
 @Component({
-  selector: 'my-component',
+  selector: 'mapCard',
   templateUrl: 'map-card.component.html',
   providers: [NavigationAppLauncherService]
 })
 export class MapCardComponent {
 
-
-  @Input() latitude: number;
-
-  @Input() langitude: number;
-
-
+  @Input() mapInfo: MapInfo;
   @ViewChild('mapcard') mapElement: ElementRef;
   map: any;
 
@@ -29,18 +23,24 @@ export class MapCardComponent {
   }
 
   ngOnInit() {
+
     let googleMapsService: GoogleMapsService = new GoogleMapsService(this.mapElement);
+
     googleMapsService.getMap({
-      longitude: this.langitude,
-      latitude: this.latitude,
+      longitude: this.mapInfo.longitude,
+      latitude: this.mapInfo.latitude,
       name: "name",
       address: "address",
     });
+
   }
 
-
   openMapsApp() {
-    this.navigationAppLauncher.lunchNavigationApp(this.latitude, this.langitude);
+
+    this.navigationAppLauncher.lunchNavigationApp(
+      this.mapInfo.latitude,
+      this.mapInfo.longitude
+    );
   }
 
 

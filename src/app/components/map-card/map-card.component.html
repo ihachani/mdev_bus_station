@@ -1,31 +1,16 @@
 <ion-card>
 
-  <div #mapcard class="mapcard"> </div>
+  <div #mapcard class="mapcard"></div>
   <ion-fab right top>
-    <button ion-fab color="secondary" mini  (click)="openMapsApp()">
+    <button ion-fab mini color="dark" (click)="openMapsApp()">
       <ion-icon name="pin"></ion-icon>
     </button>
   </ion-fab>
 
   <ion-item>
     <ion-icon name="bus" item-left large></ion-icon>
-    <h2>Bab Sadoun</h2>
-    <p>11 N. Way St, Madison, WI 53703</p>
+    <h2>{{mapInfo.name}}</h2>
+    <p>{{mapInfo.address}}</p>
   </ion-item>
-
-  <!--<ion-item>-->
-    <!--<ion-icon name="wine" item-left large></ion-icon>-->
-    <!--<h2>Institute of Fine Cocktails</h2>-->
-    <!--<p>14 S. Hop Avenue, Madison, WI 53703</p>-->
-  <!--</ion-item>-->
-
-  <!--<ion-item>-->
-    <!--<span item-left>18 min</span>-->
-    <!--<span item-left>(2.6 mi)</span>-->
-    <!--<button primary clear item-right>-->
-      <!--<ion-icon name="navigate"></ion-icon>-->
-      <!--Start-->
-    <!--</button>-->
-  <!--</ion-item>-->
 
 </ion-card>

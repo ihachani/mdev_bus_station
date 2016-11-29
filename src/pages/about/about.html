@@ -4,7 +4,7 @@
       About
     </ion-title>
     <ion-buttons end>
-      <button ion-button (click)="addMarker()">
+      <button ion-button>
         <ion-icon name="add"></ion-icon>
         Add Marker
       </button>
@@ -13,156 +13,20 @@
 </ion-header>
 
 <ion-content>
+  <div style="  display: flex; flex-wrap: wrap; align-items: stretch;">
+
+  </div>
   <ion-grid>
 
-    <ion-row responsive-sm>
-      <ion-col width-50>
-
-        <ion-card>
-
-          <div #map id="map"></div>
-          <ion-fab right top>
-            <button ion-fab color="secondary" mini  (click)="openMapsApp()">
-              <ion-icon name="pin"></ion-icon>
-            </button>
-          </ion-fab>
-
-          <ion-item>
-            <ion-icon name="football" item-left large></ion-icon>
-            <h2>Museum of Football</h2>
-            <p>11 N. Way St, Madison, WI 53703</p>
-          </ion-item>
-
-          <ion-item>
-            <ion-icon name="wine" item-left large></ion-icon>
-            <h2>Institute of Fine Cocktails</h2>
-            <p>14 S. Hop Avenue, Madison, WI 53703</p>
-          </ion-item>
-
-          <ion-item>
-            <span item-left>18 min</span>
-            <span item-left>(2.6 mi)</span>
-            <button primary clear item-right>
-              <ion-icon name="navigate"></ion-icon>
-              Start
-            </button>
-          </ion-item>
-
-        </ion-card>
-
-      </ion-col>
-
-      <ion-col width-50>
-
-        <ion-card>
-
-          <img src="https://ionicframework.com/dist/preview-app/www/assets/img/advance-card-map-madison.png">
-          <ion-fab right top>
-            <button ion-fab>
-              <ion-icon name="pin"></ion-icon>
-            </button>
-          </ion-fab>
-
-          <ion-item>
-            <ion-icon name="football" item-left large></ion-icon>
-            <h2>Museum of Football</h2>
-            <p>11 N. Way St, Madison, WI 53703</p>
-          </ion-item>
-
-          <ion-item>
-            <ion-icon name="wine" item-left large></ion-icon>
-            <h2>Institute of Fine Cocktails</h2>
-            <p>14 S. Hop Avenue, Madison, WI 53703</p>
-          </ion-item>
-
-          <ion-item>
-            <span item-left>18 min</span>
-            <span item-left>(2.6 mi)</span>
-            <button primary clear item-right>
-              <ion-icon name="navigate"></ion-icon>
-              Start
-            </button>
-          </ion-item>
-
-        </ion-card>
-
+    <ion-row *ngFor=" let i of rows" responsive-sm>
+      <ion-col *ngFor=" let stationInfo of stationsInfo | slice:(i*2):(i+1)*2" width-50>
+        <mapCard [mapInfo]="stationInfo"></mapCard>
       </ion-col>
     </ion-row>
 
-    <ion-row responsive-sm>
-      <ion-col width-50>
-        <ion-card>
-
-          <img src="https://ionicframework.com/dist/preview-app/www/assets/img/advance-card-map-madison.png">
-          <ion-fab right top>
-            <button ion-fab>
-              <ion-icon name="pin"></ion-icon>
-            </button>
-          </ion-fab>
-
-          <ion-item>
-            <ion-icon name="football" item-left large></ion-icon>
-            <h2>Museum of Football</h2>
-            <p>11 N. Way St, Madison, WI 53703</p>
-          </ion-item>
-
-          <ion-item>
-            <ion-icon name="wine" item-left large></ion-icon>
-            <h2>Institute of Fine Cocktails</h2>
-            <p>14 S. Hop Avenue, Madison, WI 53703</p>
-          </ion-item>
-
-          <ion-item>
-            <span item-left>18 min</span>
-            <span item-left>(2.6 mi)</span>
-            <button primary clear item-right>
-              <ion-icon name="navigate"></ion-icon>
-              Start
-            </button>
-          </ion-item>
-
-        </ion-card>
-      </ion-col>
-
-      <ion-col width-50>
-        <ion-card>
-
-          <img src="https://ionicframework.com/dist/preview-app/www/assets/img/advance-card-map-madison.png">
-          <ion-fab right top>
-            <button ion-fab>
-              <ion-icon name="pin"></ion-icon>
-            </button>
-          </ion-fab>
-
-          <ion-item>
-            <ion-icon name="football" item-left large></ion-icon>
-            <h2>Museum of Football</h2>
-            <p>11 N. Way St, Madison, WI 53703</p>
-          </ion-item>
-
-          <ion-item>
-            <ion-icon name="wine" item-left large></ion-icon>
-            <h2>Institute of Fine Cocktails</h2>
-            <p>14 S. Hop Avenue, Madison, WI 53703</p>
-          </ion-item>
-
-          <ion-item>
-            <span item-left>18 min</span>
-            <span item-left>(2.6 mi)</span>
-            <button primary clear item-right>
-              <ion-icon name="navigate"></ion-icon>
-              Start
-            </button>
-          </ion-item>
-
-        </ion-card>
-      </ion-col>
-    </ion-row>
   </ion-grid>
-  <my-component [latitude]="-34.9290" [langitude]="138.6010"></my-component>
-  <my-component [latitude]="-38.9290" [langitude]="137.6010"></my-component>
+
   <div class="bottom-padding"></div>
 
 
-  <!--<div #map id="map"></div>-->
 </ion-content>
