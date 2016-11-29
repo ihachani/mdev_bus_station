@@ -13,4 +13,13 @@ export class StationsService {
     return Promise.resolve(Stations);
   }
 
+  public getStationsByKeyWord(keyWord: string): Promise<MapInfo[]> {
+    let result: MapInfo[];
+
+    result = Stations.filter((value) => {
+      return (value.name.indexOf(keyWord) >= 0) || (value.address.indexOf(keyWord) >= 0);
+    });
+
+    return Promise.resolve(result);
+  }
 }
