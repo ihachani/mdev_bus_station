@@ -60,7 +60,7 @@ export class AboutPage {
   }
 
   openAddModal() {
-    let modal = this.modalCtrl.create(AddStationPage);
+    let modal = this.modalCtrl.create(AddStationPage, {aboutPage: this});
     modal.present();
   }
 }

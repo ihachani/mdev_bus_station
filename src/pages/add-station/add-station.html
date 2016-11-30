@@ -14,10 +14,28 @@
 </ion-header>
 <ion-content>
 
-  <div #mapcard class="mapcard"></div>
-  <form>
+  <div #mapcard class="mapcard" (ngSubmit)="addStationAndClose()"></div>
+
+  <form novalidate [formGroup]="form" (ngSubmit)="addStationAndClose(form)">
     <ion-item>
-      <ion-label>Todo</ion-label>
+      <ion-label>Latitude</ion-label>
+      <ion-input type="text" disabled="true" formControlName="latitude"></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-label>Longitude</ion-label>
+      <ion-input type="text" disabled="true" formControlName="longitude"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Address</ion-label>
+      <ion-input type="text" formControlName="address"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" block>Add Station</button>
   </form>
 </ion-content>

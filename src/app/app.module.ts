@@ -7,6 +7,7 @@ import {HomePage} from '../pages/home/home';
 import {TabsPage} from '../pages/tabs/tabs';
 import {MapCardComponent} from "./components/map-card/map-card.component";
 import {AddStationPage} from "../pages/add-station/add-station";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {AddStationPage} from "../pages/add-station/add-station";
     AddStationPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
