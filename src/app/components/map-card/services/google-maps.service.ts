@@ -10,6 +10,8 @@ declare var google;
 export class GoogleMapsService {
 
   private map: any;
+  private marker: any;
+  // private clickLatLang: any;
 
   constructor(private mapElement: ElementRef) {
 
@@ -28,9 +30,10 @@ export class GoogleMapsService {
     // this.addMarker(mapInfo.name);
   };
 
-    public addMarker(name: string) {
 
-    let marker = new google.maps.Marker({
+  public addMarker(name: string) {
+
+    this.marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: this.map.getCenter()
@@ -38,7 +41,7 @@ export class GoogleMapsService {
 
     let content = "<h4>" + name + "</h4>";
 
-    this.addInfoWindow(marker, content);
+    this.addInfoWindow(this.marker, content);
   }
 
   private addInfoWindow(marker, content) {
@@ -52,5 +55,26 @@ export class GoogleMapsService {
     });
 
   }
+
+  public bindClickListener = (observer: any) => {
+    google.maps.event.addListener(this.map, 'click', (event) => {
+      observer.setLatLangFromClick(event.latLng);
+    });
+
+  };
+
+  public moveMarker = (latLng: any): any => {
+
+    if (this.marker === undefined) {
+      this.marker = new google.maps.Marker({
+        map: this.map,
+        animation: google.maps.Animation.DROP,
+        position: latLng
+      });
+    } else {
+      this.marker.setPosition(latLng);
+    }
+  };
+
 
 }
