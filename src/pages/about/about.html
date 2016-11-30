@@ -13,9 +13,11 @@
 </ion-header>
 
 <ion-content>
-  <div style="  display: flex; flex-wrap: wrap; align-items: stretch;">
+  <ion-searchbar (ionInput)="filterItems($event)"></ion-searchbar>
 
-  </div>
+  <!--<div style="  display: flex; flex-wrap: wrap; align-items: stretch;">-->
+
+  <!--</div>-->
   <ion-grid>
 
     <ion-row *ngFor=" let i of rows" responsive-sm>
@@ -25,7 +27,9 @@
     </ion-row>
 
   </ion-grid>
-
+  <div *ngIf="!stationsInfo || stationsInfo.length == 0">
+    Oops Nothing Found.
+  </div>
   <div class="bottom-padding"></div>
 
 
