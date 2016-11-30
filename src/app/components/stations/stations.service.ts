@@ -22,4 +22,8 @@ export class StationsService {
 
     return Promise.resolve(result);
   }
+
+  public addStation(stationInfo: MapInfo) {
+    Stations.push(stationInfo);
+  }
 }
