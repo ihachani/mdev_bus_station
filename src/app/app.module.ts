@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
-import { IonicApp, IonicModule } from 'ionic-angular';
-import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+import {NgModule} from '@angular/core';
+import {IonicApp, IonicModule} from 'ionic-angular';
+import {MyApp} from './app.component';
+import {AboutPage} from '../pages/about/about';
+import {ContactPage} from '../pages/contact/contact';
+import {HomePage} from '../pages/home/home';
+import {TabsPage} from '../pages/tabs/tabs';
 import {MapCardComponent} from "./components/map-card/map-card.component";
+import {AddStationPage} from "../pages/add-station/add-station";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {MapCardComponent} from "./components/map-card/map-card.component";
     ContactPage,
     HomePage,
     TabsPage,
-    MapCardComponent
+    MapCardComponent,
+    AddStationPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -25,8 +27,10 @@ import {MapCardComponent} from "./components/map-card/map-card.component";
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    AddStationPage
   ],
   providers: []
 })
-export class AppModule {}
+export class AppModule {
+}

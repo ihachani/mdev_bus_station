@@ -1,8 +1,9 @@
 import {Component, ViewChild, ElementRef} from '@angular/core';
 
-import {NavController} from 'ionic-angular';
+import {NavController, ModalController} from 'ionic-angular';
 import {StationsService} from "../../app/components/stations/stations.service";
 import {MapInfo} from "../../app/components/map-card/Map-Info";
+import {AddStationPage} from "../add-station/add-station";
 
 @Component({
   selector: 'page-about',
@@ -19,7 +20,8 @@ export class AboutPage {
   private rows;
 
   constructor(public navCtrl: NavController,
-              private stationsService: StationsService) {
+              private stationsService: StationsService,
+              public modalCtrl: ModalController) {
 
   }
 
@@ -55,5 +57,10 @@ export class AboutPage {
       this.stationsInfo = this.fullStationsList;
       this.createViewRows();
     }
+  }
+
+  openAddModal() {
+    let modal = this.modalCtrl.create(AddStationPage);
+    modal.present();
   }
 }
