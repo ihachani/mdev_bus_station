@@ -25,10 +25,10 @@ export class GoogleMapsService {
     };
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    this.addMarker(mapInfo.name);
+    // this.addMarker(mapInfo.name);
   };
 
-  private addMarker(name: string) {
+    public addMarker(name: string) {
 
     let marker = new google.maps.Marker({
       map: this.map,

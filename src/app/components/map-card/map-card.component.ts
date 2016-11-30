@@ -26,13 +26,8 @@ export class MapCardComponent {
 
     let googleMapsService: GoogleMapsService = new GoogleMapsService(this.mapElement);
 
-    googleMapsService.getMap({
-      longitude: this.mapInfo.longitude,
-      latitude: this.mapInfo.latitude,
-      name: "name",
-      address: "address",
-    });
-
+    googleMapsService.getMap(this.mapInfo);
+    googleMapsService.addMarker(this.mapInfo.name);
   }
 
   openMapsApp() {
