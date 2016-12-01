@@ -14,9 +14,9 @@
 </ion-header>
 <ion-content>
 
-  <div #mapcard class="mapcard" (ngSubmit)="addStationAndClose()"></div>
+  <div #mapcard class="mapcard"></div>
 
-  <form  [formGroup]="form" (ngSubmit)="addStationAndClose(form)">
+  <form [formGroup]="form" (ngSubmit)="addStationAndClose(form)">
     <ion-item>
       <ion-label>Latitude</ion-label>
       <ion-input type="text" disabled="true" formControlName="latitude"></ion-input>
