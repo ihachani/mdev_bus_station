@@ -4,6 +4,7 @@
 import {Injectable, ElementRef} from '@angular/core';
 import {MapInfo} from "../Map-Info";
 
+//noinspection ES6ConvertVarToLetConst
 declare var google;
 
 @Injectable()

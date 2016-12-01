@@ -7,7 +7,6 @@ import {NavController} from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  todo = {}
 
   logForm() {
     this.navCtrl.parent.select(1);
