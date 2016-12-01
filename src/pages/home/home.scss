@@ -1,3 +1,18 @@
 page-home {
 
+  .home {
+    background: url("../assets/images/travel_bus.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .vertical-align-content > *
+  {
+    display: flex!important;
+    align-content: center!important;
+    align-items: center!important;
+  }
+
 }

@@ -16,7 +16,7 @@
 
   <div #mapcard class="mapcard" (ngSubmit)="addStationAndClose()"></div>
 
-  <form novalidate [formGroup]="form" (ngSubmit)="addStationAndClose(form)">
+  <form  [formGroup]="form" (ngSubmit)="addStationAndClose(form)">
     <ion-item>
       <ion-label>Latitude</ion-label>
       <ion-input type="text" disabled="true" formControlName="latitude"></ion-input>

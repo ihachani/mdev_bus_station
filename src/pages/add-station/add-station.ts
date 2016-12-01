@@ -50,7 +50,10 @@ export class AddStationPage {
         this.initializeMapFromPosition(position.coords.latitude, position.coords.longitude);
 
       }, (err) => {
+
+        console.log('Error');
         this.initializeMapFromPosition(36.7948008, 10.0031931);
+
       });
 
 

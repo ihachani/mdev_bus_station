@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 import { HomePage } from '../home/home';
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
+import { AboutPage } from '../maps/about';
+import { ContactPage } from '../about/contact';
 
 @Component({
   templateUrl: 'tabs.html'
