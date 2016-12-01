@@ -15,9 +15,9 @@ export class AboutPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  private stationsInfo: MapInfo[];
-  private fullStationsList: MapInfo[];
-  private rows;
+  stationsInfo: MapInfo[];
+  fullStationsList: MapInfo[];
+  rows;
 
   constructor(public navCtrl: NavController,
               private stationsService: StationsService,

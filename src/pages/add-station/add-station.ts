@@ -19,7 +19,7 @@ export class AddStationPage {
   mapInfo: MapInfo;
   private posOptions = {timeout: 10000, enableHighAccuracy: false};
   private googleMapsService: GoogleMapsService;
-  private form: FormGroup;
+  form: FormGroup;
   @ViewChild('mapcard') mapElement: ElementRef;
 
   constructor(public viewCtrl: ViewController,
@@ -90,8 +90,4 @@ export class AddStationPage {
     this.params.get('aboutPage').ionViewDidLoad();
   }
 
-  // addStationAndClose = () => {
-  //   console.log("Closing");
-  //   this.dismiss();
-  // };
 }
