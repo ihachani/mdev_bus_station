@@ -10,8 +10,6 @@ export class HomePage {
   todo = {}
 
   logForm() {
-    // console.log(this.todo);
-    // this.navCtrl.push(AboutPage);
     this.navCtrl.parent.select(1);
 
   }
