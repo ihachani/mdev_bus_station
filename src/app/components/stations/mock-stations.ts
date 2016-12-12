@@ -3,9 +3,14 @@
  */
 import {MapInfo} from "../map-card/Map-Info";
 export const Stations: MapInfo[] = [
-  {longitude: 40, latitude: 50, name: "name", address: "address"},
-  {longitude: 45, latitude: 45, name: "name", address: "address"},
-  {longitude: 42, latitude: 5, name: "name", address: "address"},
+  {longitude: 10.162098, latitude: 36.809629, name: "Bab Saadoun", address: "Avenue Ouled Hafouz, Tunis, Tunisia"},
+  {longitude: 10.178672, latitude: 36.787413, name: "Gare Routiere Sud", address: "Bab Alioua, Tunis, Tunisia"},
+  {
+    longitude: 10.187822,
+    latitude: 36.791321,
+    name: "Station Louage Moncef Bey",
+    address: "Avenue Hammouda Pacha, Tunis, Tunisia"
+  },
   {longitude: 120, latitude: -8, name: "name", address: "address"},
   {longitude: 88, latitude: 1, name: "name", address: "address"},
   {longitude: 170, latitude: 156, name: "name", address: "address"},
