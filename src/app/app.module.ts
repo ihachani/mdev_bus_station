@@ -8,6 +8,7 @@ import {TabsPage} from '../pages/tabs/tabs';
 import {MapCardComponent} from "./components/map-card/map-card.component";
 import {AddStationPage} from "../pages/add-station/add-station";
 import {ReactiveFormsModule} from "@angular/forms";
+import {ConnectivityService} from "../providers/connectivity-service";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     TabsPage,
     AddStationPage
   ],
-  providers: []
+  providers: [ConnectivityService]
 })
 export class AppModule {
 }
