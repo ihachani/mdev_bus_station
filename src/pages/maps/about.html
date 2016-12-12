@@ -18,17 +18,22 @@
   <!--<div style="  display: flex; flex-wrap: wrap; align-items: stretch;">-->
 
   <!--</div>-->
-  <ion-grid>
+  <div *ngIf="isConnected">
+    <ion-grid>
 
-    <ion-row *ngFor=" let i of rows" responsive-sm>
-      <ion-col *ngFor=" let stationInfo of stationsInfo | slice:(i*2):(i+1)*2" width-50>
-        <mapCard [mapInfo]="stationInfo"></mapCard>
-      </ion-col>
-    </ion-row>
+      <ion-row *ngFor=" let i of rows" responsive-sm>
+        <ion-col *ngFor=" let stationInfo of stationsInfo | slice:(i*2):(i+1)*2" width-50>
+          <mapCard [mapInfo]="stationInfo"></mapCard>
+        </ion-col>
+      </ion-row>
 
-  </ion-grid>
-  <div *ngIf="!stationsInfo || stationsInfo.length == 0">
-    Oops Nothing Found.
+    </ion-grid>
+    <div *ngIf="!stationsInfo || stationsInfo.length == 0">
+      Oops Nothing Found.
+    </div>
+  </div>
+  <div *ngIf="!isConnected">
+    No Internet Connection is found.
   </div>
   <div class="bottom-padding"></div>
 

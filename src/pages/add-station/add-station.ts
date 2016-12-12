@@ -87,7 +87,7 @@ export class AddStationPage {
     console.log(value, valid);
     this.stationsService.addStation(value);
     this.dismiss();
-    this.params.get('aboutPage').ionViewDidLoad();
+    this.params.get('aboutPage').ionViewWillEnter();
   }
 
 }

@@ -4,6 +4,7 @@ import {NavController, ModalController} from 'ionic-angular';
 import {StationsService} from "../../app/components/stations/stations.service";
 import {MapInfo} from "../../app/components/map-card/Map-Info";
 import {AddStationPage} from "../add-station/add-station";
+import {ConnectivityService} from "../../providers/connectivity-service";
 
 @Component({
   selector: 'page-about',
@@ -18,10 +19,12 @@ export class AboutPage {
   stationsInfo: MapInfo[];
   fullStationsList: MapInfo[];
   rows;
+  isConnected: boolean;
 
   constructor(public navCtrl: NavController,
               private stationsService: StationsService,
-              public modalCtrl: ModalController) {
+              public modalCtrl: ModalController,
+              public connectivityService: ConnectivityService) {
 
   }
 
@@ -29,12 +32,20 @@ export class AboutPage {
 
   }
 
+  ionViewWillEnter() {
+    if (this.connectivityService.isOnline()) {
+      this.isConnected = true;
+      this.stationsService.getStations().then(stations => {
+        this.stationsInfo = stations;
+        this.fullStationsList = stations;
+        this.createViewRows();
+      });
+    } else {
+      this.isConnected = false;
+    }
+  }
+
   ionViewDidLoad() {
-    this.stationsService.getStations().then(stations => {
-      this.stationsInfo = stations;
-      this.fullStationsList = stations;
-      this.createViewRows();
-    });
 
   }
 
